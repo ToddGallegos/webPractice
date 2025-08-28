@@ -1,3 +1,4 @@
+"use strict";
 const myh1 = document.getElementById("myh1");
 const ageInput = document.getElementById("ageInput");
 const ageButton = document.getElementById("ageButton");
@@ -5,6 +6,11 @@ const ageParagraph = document.getElementById("ageParagraph");
 const counterNumber = document.getElementById("counterNumber");
 const rollButton = document.getElementById("rollButton");
 const diceParagraph = document.getElementById("diceParagraph");
+const doNotPress = document.getElementById("doNotPress");
+const counterUp = document.getElementById("counterUp");
+const counterReset = document.getElementById("counterReset");
+const counterDown = document.getElementById("counterDown");
+let response = "";
 counterNumber.textContent = 0;
 let counter = 0;
 
@@ -25,6 +31,8 @@ function checkAge() {
       ageParagraph.textContent = `${ageValue}?? Prehistoric!`;
     } else if (ageValue >= 40) {
       ageParagraph.textContent = `At ${ageValue} you're getting old.`;
+    } else if (ageValue === 10) {
+      ageParagraph.textContent = "Your name is Emery!!! <3";
     } else if (ageValue >= 18) {
       ageParagraph.textContent = `Ah ${ageValue}, the prime of life.`;
     } else if (ageValue >= 0) {
@@ -60,4 +68,11 @@ rollButton.onclick = function () {
   let diceNumber = Math.floor(Math.random() * 6 + 1);
   let diceNumber2 = Math.floor(Math.random() * 6 + 1);
   diceParagraph.textContent = `${diceNumber} and ${diceNumber2}`;
+};
+
+doNotPress.onclick = function () {
+  response = "";
+  while (response != "the code") {
+    response = window.prompt("Enter the code or I won't let you go.");
+  }
 };

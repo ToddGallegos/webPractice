@@ -51,3 +51,16 @@ body {
 #diceParagraph {
   font-size: 2.5em;
 }
+
+#doNotPress {
+  background-color: red;
+  padding: 15px 15px;
+  border-radius: 20px;
+  font-size: 2em;
+  transition: background 0.25s;
+}
+
+#doNotPress:hover {
+  background-color: darkred;
+  cursor: pointer;
+}

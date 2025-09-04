@@ -10,9 +10,15 @@ const doNotPress = document.getElementById("doNotPress");
 const counterUp = document.getElementById("counterUp");
 const counterReset = document.getElementById("counterReset");
 const counterDown = document.getElementById("counterDown");
+const numGuess = document.getElementById("numGuess");
+const numGuessButton = document.getElementById("numGuessButton");
+const numGuessParagraph = document.getElementById("numGuessParagraph");
 let response = "";
 counterNumber.textContent = 0;
 let counter = 0;
+numGuessParagraph.textContent = "?";
+let guessNumber = Math.floor(Math.random() * 100 + 1);
+let tries = 0;
 
 myh1.textContent = "Todd's Playground";
 
@@ -76,3 +82,27 @@ doNotPress.onclick = function () {
     response = window.prompt("Enter the code or I won't let you go.");
   }
 };
+
+
+function numGuessFunc() {
+  let numGuessResponse = Number(numGuess.value.trim());
+  numGuess.value = "";
+  tries++;
+
+  if (numGuessResponse == guessNumber) {
+    numGuessParagraph.textContent = `Great job! It took ${tries} tries! Play again?`;
+    guessNumber = Math.floor(Math.random() * 100 + 1);
+    tries = 0;
+  } else if (numGuessResponse > guessNumber) {
+    numGuessParagraph.textContent = "Lower...";
+  } else if (numGuessResponse < guessNumber) {
+    numGuessParagraph.textContent = "Higher...";
+  }
+};
+
+numGuessButton.onclick = numGuessFunc;
+numGuess.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    numGuessFunc();
+  }
+});
